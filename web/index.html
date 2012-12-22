@@ -1,0 +1,12 @@
+This is a trivial note-grabbing webpage script.
+
+It's meant to be there to transcribe little ideas I had over the
+course of the day, accessible from a button on my phone's homescreen
+or a browser bookmark.
+
+It's just a text area that writes to a timestamped text file in a
+directory.  There's a cron component that runs on another host to make
+a copy of that directory of timestamped files.
+
+It secures itself through obscurity; I don't want to solve the shared
+token problem, and I don't want to put htaccess in my way.
