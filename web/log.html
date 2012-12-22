@@ -1,6 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html> <head>
-<title></title>
+<title>idea.php creation process notes</title>
+<link href="log.css" rel="stylesheet" type="text/css" media="screen">
+
 </head>
 
 <body>
@@ -8,35 +10,33 @@
 
 <p>(Without timestamps)</p>
 
-<p>Continuing the theme of transparency, I thought it might be
+<p class="postfacto">Continuing the theme of transparency, I thought it might be
 amusing/illustrative to show how I solve problems like this one.  I
 know what I want to do: make a webpage to post a line of text to look
 at later.  Now to actually do it.</p>
 
-<p>I know I want to use PHP on the server side, since it's
+<p class="leadup">I know I want to use PHP on the server side, since it's
 ubiquitous.  I want to save the content to a file on disk, since
 databases aren't very durable.  My first thought is a fortune(1) file,
 because that's how you store lots of little snippets of text.</p>
 
-<p>Then I had a moment of clarity: appending over and over like that
+<p class="leadup">Then I had a moment of clarity: appending over and over like that
 is going to fuck up at some point.  So, let's use lots of little files
 instead of one big one.</p>
 
-<p>I consider how to group things and make them discoverable.  Do I
+<p class="leadup">I consider how to group things and make them discoverable.  Do I
 want a web interface to read all the contents back?  No: it's useless
 to me, but very useful to anyone who finds a copy of this on the web
 and wants to abuse it.  Having this be write-only is probably good.
 Also, it's simpler, less to write.</p>
 
-<p>I'll probably use hashtags to group stuff for myself, and I need to
+<p class="leadup">I'll probably use hashtags to group stuff for myself, and I need to
 figure out how to publish these ideas later on.  But that's the next
 problem.  Now to get it going.</p>
 
 <p>So, PHP and writing files.  This is something I've done before, but
-don't do often enough to remember how to do it.  To google!</p>
-
-<p><b>Look up how to write to a file in PHP again</b>: <a
-href="https://www.google.com/search?q=php+write+to+file">[php write to file]</a></p>
+don't do often enough to remember how to do it.  To google!  <span class="search">Look up how to write to a file in PHP again: <a
+href="https://www.google.com/search?q=php+write+to+file">[php write to file]</a></span></p>
 
 <p class="analysis">While that's running, I'm thinking about how to
 write this first piece of code.  I need the PHP script to show the
@@ -72,7 +72,7 @@ here, so that's fine (it mattered a lot at work).  Oh, wait, it's PHP5
 only.  Going to use fopen/fwrite/fclose, since I don't know if my
  webhost is on PHP4 or 5 and don't really care.</p>
 
-<p>Look up the API calls to double-check my understanding of them.  <a
+<p><span class="search">Look up the API calls to double-check my understanding of them.  <a
  href="http://php.net/manual/en/function.fopen.php">fopen()</a>, <a
  href="http://php.net/manual/en/function.fwrite.php">fwrite()</a>, can
 see fclose()<span class="distraction">Should I make these things
@@ -80,38 +80,60 @@ fixed-width/tt?  Is tt still the right tag for that?
 Meta-distraction: emacs autocompleted "distr" to "distractions", so I
 had to glance back to make sure whether I was using it in singular or
 plural.</span> in the example code for those, so I feel confident in
-how it works.</p>
+how it works.</span></p>
 
-<p>Now to get the variable content out of a PHP POST.  <a
+<p><span class="search">Now to get the variable content out of a PHP POST.  <a
 href="https://www.google.com/search?q=php+POST+variables">[php POST
 variables]</a>.  Easy, though I misremembered the var name (I thought
-$POST, not $_POST).</p>
+$POST, not $_POST).</span></p>
 
-<p>PHP time() is time(), right?  Search for it on the PHP site: <a
-href="http://us3.php.net/manual/en/function.time.php">time()</a>: yep.</p>
+<p>PHP time() is time(), right?  <span class="search">Search for it on the PHP site: <a
+href="http://us3.php.net/manual/en/function.time.php">time()</a>: yep.</span></p>
 
 
-<p>Now to remember how to write an HTML form: <a
+<p><span class="search">Now to remember how to write an HTML form: <a
 href="https://www.google.com/search?q=html+form">[html form]</a>.  <a
 href="http://www.w3schools.com/html/html_forms.asp">W3Schools' HTML
-Form Page</a> has an example that's good enough for me. They also have
+Form Page</a> has an example that's good enough for me.</span> They also have
 a thing that reminds me that the tag for a big text box is textarea,
 and that I can specify cols and rows.  Not doing that for now.</p>
 
-<p>Now to test run.  Does OS X's ~/Sites/ support PHP scripts?  Just
+<p>Now to test run.  <span class="yak">Does OS X's ~/Sites/ support PHP scripts?  Just
 trying it with a dumb little foo.php that does "echo 'hi';".  Nope,
-rendered as a text file.  A quick google confirms this: <a
+rendered as a text file.  <span class="search">A quick google confirms this: <a
 href="https://www.google.com/search?q=os+x+webserver+php&oq=os+x+webserver+php&aqs=chrome.0.57j62l3j60l2.3388&sugexp=chrome,mod=12&sourceid=chrome&ie=UTF-8">[os
 x webserver php]</a> gets me <a
 href="http://foundationphp.com/tutorials/php_leopard.php">A
 complicated tutorial for Leopard</a>.  Not directly relevant, but it's
-discouraging enough for me.</p>
-
+discouraging enough for me.</span></span></p>
 
 <p>Throwing it on my webhost.  Surprisingly, it worked.  Now to commit
 and then start documentation.</p>
 
+<p class="postfacto">Documentation above committed as a first draft.  Now need to add
+CSS for style, then review the above and put the right CSS classes on
+the elements.  After that, I want to templatize the HTML directory
+here.</p>
+
+<p>Making a new CSS file for this log thingy, since I may do this
+again on another project.  Created the file, now cribbing off another
+webpage's link rel tag to remember the sort of arcane syntax for
+this. <span class="distraction">Cut and paste from a webpage.  Noticed
+the number of arguments and possible orderings: it seems like there's
+a lot of data in the order of them, whether or not media is included,
+etc, wondering if it's possible to fingerprint them or trace lineage.
+Hunh.</span> </p>
+
+<p>Actually writing CSS now <span class="distraction">Cleaning up
+browser tabs to close a window full of junk, realize that a tab that I
+closed automatically needs to get put into the links document for the
+project I was working on a couple hours ago.  Reopening closed
+tabs to find it, then cutting and pasting over.</span></p>
+
+<p>CSS looks okay structurally; committing now, then one more
+structural/semantic edit pass, then a pass to make it pretty</p>
+
 <hr>
 <address></address>
-<!-- hhmts start -->Last modified: Sat Dec 22 13:04:38 PST 2012 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Sat Dec 22 13:18:38 PST 2012 <!-- hhmts end -->
 </body> </html>

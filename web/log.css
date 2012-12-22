@@ -1,0 +1,17 @@
+.yak { 
+    background-color: yellow;
+}
+
+.distraction {
+    background-color: red;
+}
+
+.analysis, .postfacto {
+    background-color: grey;
+}
+
+.search {
+    background-color: blue;
+}
+
+.leadup {} /* same for now */
