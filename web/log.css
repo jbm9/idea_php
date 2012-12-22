@@ -1,17 +1,30 @@
+body {
+    width: 45em;
+    
+}
+
 .yak { 
-    background-color: yellow;
+    background-color: #ffc88c;
 }
 
 .distraction {
-    background-color: red;
+    background-color: #f7baba;
 }
 
-.analysis, .postfacto {
-    background-color: grey;
+.postfacto {
+    background-color: #d1d1d1;
 }
 
 .search {
-    background-color: blue;
+    background-color: #f0f2ac;
 }
 
-.leadup {} /* same for now */
+.leadup {
+    background-color: #fadcfa;
+}
+
+.coding {
+    background-color: #B0E6A5;
+
+
+}

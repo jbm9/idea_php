@@ -10,10 +10,34 @@
 
 <p>(Without timestamps)</p>
 
-<p class="postfacto">Continuing the theme of transparency, I thought it might be
+<p>Continuing the theme of transparency, I thought it might be
 amusing/illustrative to show how I solve problems like this one.  I
 know what I want to do: make a webpage to post a line of text to look
 at later.  Now to actually do it.</p>
+
+<p> Here's a key to the hightlights:</p>
+<ul>
+  <li>Text with no background color are (mostly) in-line notes of what
+  I was doing</li>
+  <li>Horizontal lines separate phases of the project</li>
+  <li class="leadup">Lead-up: thinking I did before starting coding
+  </li>
+  <li class="search">Search: I went and searched for reference
+  material to refer to in order to make sure I knew what I was doing.</li>
+
+  <li class="coding">Coding: actual code got written</li>
+  <li class="yak">Yak-shaving: technical stuff I worked on that was ancillary to
+the task at hand</li>
+<li class="distraction">Distractions: distracting thoughts, mostly
+
+because I thought it might be interesting to see how much I actually
+get distracted.</li>
+</ul>
+
+
+<hr>
+
+<h2>Before creating the repo</h2>
 
 <p class="leadup">I know I want to use PHP on the server side, since it's
 ubiquitous.  I want to save the content to a file on disk, since
@@ -34,11 +58,28 @@ Also, it's simpler, less to write.</p>
 figure out how to publish these ideas later on.  But that's the next
 problem.  Now to get it going.</p>
 
+<p class="leadup">Security?  How do I keep other people out of my
+business?  I could do something complicated with magic tokens in the
+bookmark URL on my phone, but that's going to be complicated.  I could
+put it behind htaccess, but I don't want to log in all the time.  The
+goal is to not disrupt my silly little idea.  I think I'm going to run
+with obscurity: put it in a randomly-named subdirectory on my webhost
+and go from there.  How to structure that subdirectory?  I could put
+it in /i1jo3i1j23oi1j2/ or in /oijoi/oi1231j23/23hbfaf/ -- is one
+better than the other?  The single directory is better: it doesn't
+allow partial matching (eg the lock codes in movies, where all the
+digits spin, then the leftmost one locks, then the second locks, etc).</p>
+
+<hr>
+
+<h2>Created the repo with 'undertake project idea_php'</h2>
+
+
 <p>So, PHP and writing files.  This is something I've done before, but
 don't do often enough to remember how to do it.  To google!  <span class="search">Look up how to write to a file in PHP again: <a
 href="https://www.google.com/search?q=php+write+to+file">[php write to file]</a></span></p>
 
-<p class="analysis">While that's running, I'm thinking about how to
+<p>While that's running, I'm thinking about how to
 write this first piece of code.  I need the PHP script to show the
 input form if it's called without arguments <span
 class="distraction">A crappy Weezer song comes on; I switch over to my
@@ -82,14 +123,21 @@ had to glance back to make sure whether I was using it in singular or
 plural.</span> in the example code for those, so I feel confident in
 how it works.</span></p>
 
+<p class="coding">Write 5 lines of PHP, including dummy variables for
+the filename and the idea text.</p>
+
 <p><span class="search">Now to get the variable content out of a PHP POST.  <a
 href="https://www.google.com/search?q=php+POST+variables">[php POST
 variables]</a>.  Easy, though I misremembered the var name (I thought
 $POST, not $_POST).</span></p>
 
+<p class="coding">Update 1 line of PHP to extract the POST content.</p>
+
 <p>PHP time() is time(), right?  <span class="search">Search for it on the PHP site: <a
 href="http://us3.php.net/manual/en/function.time.php">time()</a>: yep.</span></p>
 
+<p class="coding">Update 1 line of PHP to set the filename to time() +
+".txt".</p>
 
 <p><span class="search">Now to remember how to write an HTML form: <a
 href="https://www.google.com/search?q=html+form">[html form]</a>.  <a
@@ -97,6 +145,9 @@ href="http://www.w3schools.com/html/html_forms.asp">W3Schools' HTML
 Form Page</a> has an example that's good enough for me.</span> They also have
 a thing that reminds me that the tag for a big text box is textarea,
 and that I can specify cols and rows.  Not doing that for now.</p>
+
+<p class="coding">Add a trivial HTML form: 4 lines of HTML.</p>
+
 
 <p>Now to test run.  <span class="yak">Does OS X's ~/Sites/ support PHP scripts?  Just
 trying it with a dumb little foo.php that does "echo 'hi';".  Nope,
@@ -110,10 +161,21 @@ discouraging enough for me.</span></span></p>
 <p>Throwing it on my webhost.  Surprisingly, it worked.  Now to commit
 and then start documentation.</p>
 
-<p class="postfacto">Documentation above committed as a first draft.  Now need to add
+<p>Looking at the PHP before committing, I realize that
+I want to not create empty text files by accident.  Add error
+handling.  <span class="coding">5 lines of PHP</span>.</p>
+
+<p>Documentation above committed as a first draft.  Now need to add
 CSS for style, then review the above and put the right CSS classes on
 the elements.  After that, I want to templatize the HTML directory
 here.</p>
+
+<hr>
+
+<h2>Have working code, commit and revise doco</h2>
+
+<p class="coding">Net result of above: 11 lines of PHP and a 4 line
+HTML Form (wrapped in a bunch of emacs default HTML).</p>
 
 <p>Making a new CSS file for this log thingy, since I may do this
 again on another project.  Created the file, now cribbing off another
@@ -131,9 +193,56 @@ project I was working on a couple hours ago.  Reopening closed
 tabs to find it, then cutting and pasting over.</span></p>
 
 <p>CSS looks okay structurally; committing now, then one more
-structural/semantic edit pass, then a pass to make it pretty</p>
+structural/semantic edit pass, then a pass to make it pretty.</p>
 
-<hr>
-<address></address>
-<!-- hhmts start -->Last modified: Sat Dec 22 13:18:38 PST 2012 <!-- hhmts end -->
+<p>Looking over this, decide that I want to add coding sections to
+show how little code actually came out of all of the above. <span
+class="distraction">Paying attention to how distractable I am reminds
+me that maybe I need to take my next ADD pill.  Check the clock.  Not
+yet.</span>  Look back over, add total line counts, seems like it's
+coming together.</p>
+
+<p class="distraction">Feels like this is taking forever.  Try to
+figure out how long I've been working on this, kind of space out in
+the process.  Catch myself, realize I can check the git log, since
+undertaker creates an initial commit of the README, and I committed
+the working copy pretty quickly.  I can make the time estimate even
+better by looking at the copy I scp'd up to my webhost.  15 minutes to
+get to a workingprogram, and just over an hour to now.  Seems longer.
+Also, I have a small hangnail that's bothering me (fingernails are one
+of my nervous/bored/unfocused tics).</p>
+
+<p>Take a small mental brake to clear my head, then come back for the
+actual semantic review, which I got distracted from by adding the
+coding sections above.</p>
+
+<p><span class="yak">Added a key to the top of the document.</span>
+I'm going to make this more attractive, then go back to the review.
+The webpage is kind of unreadable, and reiewing in HTML is distracting
+to me.</p>
+
+<p>Need to make the non-core things easier to separate from the text.
+Maybe the baseline thing I was thinking about.  <span
+class="search">Looking for how to adjust baseline in CSS: <a
+ href="https://www.google.com/search?hl=en&safe=off&tbo=d&q=css+vertical+spacing&oq=css+vertical+spacing">
+[CSS vertical spacing]</a>, after a few false starts ("text baseline",
+"CSS text baseline")</span>.  Editing this paragraph made me think
+enough to realize it's probably a terrible idea, more distracting than
+<i>not</i> spacing things, so back to finding suitably faint
+highlighting colors for the other properties.</p>
+
+<p>I need to pick colors.  I think about digging out the stuff I've
+done before, but I'm not sure where it's at, so I'm going to start
+from scratch, again.  <span class="search">Looking for color scheme
+generators or something <a
+href="https://www.google.com/search?q=html+color+picker">[html color picker]</a> doesn't get what I was
+looking for (obvious in retrospect)</span>, but does get me <a
+href="http://www.colorpicker.com/">colorpicker.com</a>, which is
+useful, even though OS X the exact same damned thing built in
+(somewhere, which I'd have to find).</p>
+
+<p>Okay, that looks much better.  Calling it finished enough.  Fuck
+templatizing for now.  I'm going to send this to some friends and get
+feedback.  And actually deploy it to a private place on my server!</p>
+
 </body> </html>
