@@ -1,9 +1,37 @@
-.skel
-=====
+idea_php
+========
 
-This is a skeleton project.  It needs better documentation.
+This is a very basic note capturing application. 
+
+Its homepage is at
+  http://www.joshisanerd.com/projects/idea_php/
+
+It's just an HTML file and a PHP script that writes form submissions
+directly out to text files.  As such, it's not really appropriate to
+be deployed on the real web, except maybe in a very obscure directory
+on your webserver.  Even then, it's quite insecure, and you shouldn't
+use it.  I do, but you shouldn't.  Do as I say, not as I do.
+
+The script is write-only.  To get the content out of that webserver
+directory, you'll need a cron job to rsync it off over ssh or some
+such.  I leave that as an exercise for the reader (this is partly a
+filter: if you're not able to do that automation, you probably
+shouldn't be using this in its current, horrifically insecure, state).
+
+It's intentionally trivial: the design is that you place it in a
+random directory on your webhost, then bookmark it in your desktop
+browser's bookmark bar and on your phone's home screen.  You're then
+one step away from writing small/medium/large notes to yourself.
+Personally, I've been using it with voice recognition on my phone, and
+it's been great.
+
 
 Contents:
 
-web/ -- An empty website for this thing
-code/ -- An empty directory for code for this thing
+web/ -- Documentation and development notes
+code/ -- The code implementation.
+
+
+Deployment: copy the contents of code/ to a new, randomly-named
+directory on your webserver.  That should be it, assuming your
+webserver supports any vaguely recent version of PHP.
