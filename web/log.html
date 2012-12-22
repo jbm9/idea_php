@@ -4,44 +4,114 @@
 </head>
 
 <body>
-<h1></h1>
+<h1>Real-time log</h1>
 
-// Look up how to write to a file in PHP again
-https://www.google.com/search?q=php+write+to+file&oq=php+write+to+file&aqs=chrome.0.57j60l3j0l2.2011&sugexp=chrome,mod=12&sourceid=chrome&ie=UTF-8
+<p>(Without timestamps)</p>
 
-// Thinking how to make a script multimodal: hit it one way and it
-renders a form, another way and it writes a file.
+<p>Continuing the theme of transparency, I thought it might be
+amusing/illustrative to show how I solve problems like this one.  I
+know what I want to do: make a webpage to post a line of text to look
+at later.  Now to actually do it.</p>
 
-// Adding to this log page reminds me that I can just have a static
-HTML file with a CGI behind it, hurray.
+<p>I know I want to use PHP on the server side, since it's
+ubiquitous.  I want to save the content to a file on disk, since
+databases aren't very durable.  My first thought is a fortune(1) file,
+because that's how you store lots of little snippets of text.</p>
 
-http://php.net/manual/en/function.file-put-contents.php -- PHP5 only,
-but looks nice.  Going to use fopen/fwrite/fclose
+<p>Then I had a moment of clarity: appending over and over like that
+is going to fuck up at some point.  So, let's use lots of little files
+instead of one big one.</p>
 
-http://php.net/manual/en/function.fopen.php
-http://php.net/manual/en/function.fwrite.php
+<p>I consider how to group things and make them discoverable.  Do I
+want a web interface to read all the contents back?  No: it's useless
+to me, but very useful to anyone who finds a copy of this on the web
+and wants to abuse it.  Having this be write-only is probably good.
+Also, it's simpler, less to write.</p>
 
-// Getting variables out of a PHP POST
+<p>I'll probably use hashtags to group stuff for myself, and I need to
+figure out how to publish these ideas later on.  But that's the next
+problem.  Now to get it going.</p>
 
-https://www.google.com/search?q=php+POST+variables&oq=php+POST+variables&aqs=chrome.0.57j0j5j62l3.3908&sugexp=chrome,mod=12&sourceid=chrome&ie=UTF-8
+<p>So, PHP and writing files.  This is something I've done before, but
+don't do often enough to remember how to do it.  To google!</p>
 
-// PHP time() is time(), right?
+<p><b>Look up how to write to a file in PHP again</b>: <a
+href="https://www.google.com/search?q=php+write+to+file">[php write to file]</a></p>
 
-http://us3.php.net/manual/en/function.time.php
+<p class="analysis">While that's running, I'm thinking about how to
+write this first piece of code.  I need the PHP script to show the
+input form if it's called without arguments <span
+class="distraction">A crappy Weezer song comes on; I switch over to my
+browser to snark about it on the twitters</span> <span
+class="yak">That last span reminds me that I should add CSS classes to
+the different kinds of content in this file</span>.  So anyway.  I
+need the PHP to print the form if no arguments, but write the text if
+it gets arguments.  The break in mental state to come over here and
+<span class="distraction">Writing on the couch is making my back hurt,
+moving to the front room.  The window is open, need to close it.  The
+curtains get in the way; I'm reminded that I need to buy new
+curtains. The window is sticky and won't close; I curse old houses,
+latex paint, and wet days.  Maybe I should use my Leatherman to scrape
+off some paint there?  No, need to finish writing this doc.  This
+distraction note itself becomes a non-trivial distraction.
+Meta.</span>.  The break in mental state is <span class="yak">Thinking
+about how to format this so it's clear what's what and so you can
+possibly maybe read the text around the distractions.  Colors? Make
+the yakshaving/distraction spans super/sub scripts?  Should I double
+the baseline height to make that work with bigger sub/sup text?</span>
+The break in mental state reminded me that I can use a static HTML
+page to submit a form to a CGI.  It's clearly been a while since I did
+web stuff.</p>
+
+<p>Google results show a new method I haven't seen before, <a
+ href="http://php.net/manual/en/function.file-put-contents.php">file_put_contents()</a>,
+which looks nice.  Actually, a coworker used this on a project at
+work; I was dubious, but it's apparently not a brain-dead
+implementation, so it's efficient.  But efficiency doesn't matter
+here, so that's fine (it mattered a lot at work).  Oh, wait, it's PHP5
+only.  Going to use fopen/fwrite/fclose, since I don't know if my
+ webhost is on PHP4 or 5 and don't really care.</p>
+
+<p>Look up the API calls to double-check my understanding of them.  <a
+ href="http://php.net/manual/en/function.fopen.php">fopen()</a>, <a
+ href="http://php.net/manual/en/function.fwrite.php">fwrite()</a>, can
+see fclose()<span class="distraction">Should I make these things
+fixed-width/tt?  Is tt still the right tag for that?
+Meta-distraction: emacs autocompleted "distr" to "distractions", so I
+had to glance back to make sure whether I was using it in singular or
+plural.</span> in the example code for those, so I feel confident in
+how it works.</p>
+
+<p>Now to get the variable content out of a PHP POST.  <a
+href="https://www.google.com/search?q=php+POST+variables">[php POST
+variables]</a>.  Easy, though I misremembered the var name (I thought
+$POST, not $_POST).</p>
+
+<p>PHP time() is time(), right?  Search for it on the PHP site: <a
+href="http://us3.php.net/manual/en/function.time.php">time()</a>: yep.</p>
 
 
-// Now to remember how to write an HTML form:
+<p>Now to remember how to write an HTML form: <a
+href="https://www.google.com/search?q=html+form">[html form]</a>.  <a
+href="http://www.w3schools.com/html/html_forms.asp">W3Schools' HTML
+Form Page</a> has an example that's good enough for me. They also have
+a thing that reminds me that the tag for a big text box is textarea,
+and that I can specify cols and rows.  Not doing that for now.</p>
 
-https://www.google.com/search?q=html+form&oq=html+form&aqs=chrome.0.57j60j64j59j60l2.811&sugexp=chrome,mod=12&sourceid=chrome&ie=UTF-8
+<p>Now to test run.  Does OS X's ~/Sites/ support PHP scripts?  Just
+trying it with a dumb little foo.php that does "echo 'hi';".  Nope,
+rendered as a text file.  A quick google confirms this: <a
+href="https://www.google.com/search?q=os+x+webserver+php&oq=os+x+webserver+php&aqs=chrome.0.57j62l3j60l2.3388&sugexp=chrome,mod=12&sourceid=chrome&ie=UTF-8">[os
+x webserver php]</a> gets me <a
+href="http://foundationphp.com/tutorials/php_leopard.php">A
+complicated tutorial for Leopard</a>.  Not directly relevant, but it's
+discouraging enough for me.</p>
 
-// Now to test run.  Does os x sites support this?  Just trying it.
 
-
-// Nope.  Throwing it on my webhost.
-
-// Surprisingly, it worked.
+<p>Throwing it on my webhost.  Surprisingly, it worked.  Now to commit
+and then start documentation.</p>
 
 <hr>
 <address></address>
-<!-- hhmts start -->Last modified: Sat Dec 22 12:42:27 PST 2012 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Sat Dec 22 13:04:38 PST 2012 <!-- hhmts end -->
 </body> </html>
