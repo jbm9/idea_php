@@ -1,12 +1,27 @@
-This is a trivial note-grabbing webpage script.
+<!-- {{ Title: idea_php: scribbles from anywhere }} -->
 
-It's meant to be there to transcribe little ideas I had over the
+<h1>idea_php</h1>
+
+<p>This is a trivial note-grabbing webpage script.  It's intended to
+be bookmarked in your browser boookmark bar and on your phone's home
+screen, to allow you to quickly scribble a note to yourself from
+anywhere. It has no security, and is write-only (you need to manually
+copy out the .txt files it creates).  This is great for me, but may
+not be so good for you.</p>
+
+<p>It's meant to be there to transcribe little ideas I had over the
 course of the day, accessible from a button on my phone's homescreen
-or a browser bookmark.
+or a browser bookmark.</p>
 
-It's just a text area that writes to a timestamped text file in a
-directory.  There's a cron component that runs on another host to make
-a copy of that directory of timestamped files.
+<p>Also possibly interesting: I kept <a href="log.html">a fairly
+detailed log of idea_php's creation process</a>, mostly as an
+experiment in doing so.  It was kind of helpful, but kind of got in
+the way, so I'm contemplating ways to make that process smoother.</p>
 
-It secures itself through obscurity; I don't want to solve the shared
-token problem, and I don't want to put htaccess in my way.
+<h2>Download</h2>
+
+<p>You can check out a copy with <tt>git clone
+http://www.joshisanerd.com/projects/idea_php/idea_php.git</tt> .  It's
+an <a
+ href="http://www.joshisanerd.com/projects/undertaker/">undertaker</a>
+project; see that webpage for more on the philosophy behind those.</p>
